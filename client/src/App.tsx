@@ -28,7 +28,10 @@ interface Bid {
   amount: number;
 }
 
-const SOCKET_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001';
+// In production, use relative URL to connect to same host
+// In development, use env variable or localhost
+const SOCKET_URL = import.meta.env.VITE_SERVER_URL || 
+  (window.location.hostname === 'localhost' ? 'http://localhost:3001' : '');
 
 // Utility function to format boss names
 const formatBossName = (bossName: string) => {

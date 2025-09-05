@@ -247,7 +247,7 @@ function loadPlayerData(): Player[] {
 }
 
 // REST endpoints
-app.post('/api/create-room', (req, res) => {
+app.post('/api/create-room', (req: any, res: any) => {
   const { captainCount, initialBudget, maxPlayersPerRound } = req.body;
   
   let code = generateRoomCode();
