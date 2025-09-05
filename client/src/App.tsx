@@ -352,7 +352,6 @@ function App() {
       setRevealedBids(sortedBids);
       setCurrentlyRevealedBids([]);
       setWinner(revealedWinner);
-      setCaptains(updatedCaptains);
       setAuctionState('revealed');
       setRevealPhase('hidden');
       
@@ -362,6 +361,12 @@ function App() {
           setCurrentlyRevealedBids(prev => [...prev, bid]);
         }, index * 800); // 800ms delay between each bid reveal
       });
+      
+      // Delay captain updates (budget & roster) until all bids are revealed
+      const totalBidRevealTime = sortedBids.length * 800;
+      setTimeout(() => {
+        setCaptains(updatedCaptains);
+      }, totalBidRevealTime);
       
       // Store the player for reveal animation
       if (auctionedPlayer) {
