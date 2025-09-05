@@ -7,7 +7,7 @@ echo "Installing root dependencies..."
 npm install
 
 echo "Building server..."
-npx --yes tsc
+npx tsc --project tsconfig.json
 if [ ! -d "dist" ]; then
   echo "Error: TypeScript compilation failed - dist directory not created"
   exit 1
