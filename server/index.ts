@@ -603,13 +603,6 @@ io.on('connection', (socket) => {
   });
 });
 
-// Catch-all route for client-side routing (must be after all other routes)
-if (process.env.NODE_ENV === 'production') {
-  app.get('/*', (req: any, res: any) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-  });
-}
-
 const PORT = process.env.PORT || 3001;
 httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
