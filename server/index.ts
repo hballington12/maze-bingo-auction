@@ -63,7 +63,7 @@ interface AuctionRoom {
   currentPool: string;
   currentBids: Map<string, Bid>;
   completedPlayers: Set<number>;
-  state: 'setup' | 'waiting' | 'bidding' | 'revealing' | 'complete';
+  state: 'setup' | 'waiting' | 'bidding' | 'revealing' | 'complete' | 'ready-to-reveal';
   auctioneerSocket?: string;
   skippedCaptains: Set<string>;
   settings: {
@@ -205,9 +205,9 @@ function loadPlayerData(): Player[] {
     let playerId = 0;
 
     // Load single players from each pool
-    Object.entries(playersData.pools).forEach(([poolName, players]: [string, any[]]) => {
+    Object.entries(playersData.pools).forEach(([poolName, players]) => {
       if (poolName !== 'Duos') {
-        players.forEach((player: any) => {
+        (players as any[]).forEach((player: any) => {
           allPlayers.push({
             id: `player-${playerId++}`,
             name: player.name,
@@ -217,7 +217,7 @@ function loadPlayerData(): Player[] {
         });
       } else {
         // Handle duo players
-        players.forEach((duo: any) => {
+        (players as any[]).forEach((duo: any) => {
           allPlayers.push({
             id: `duo-${playerId++}`,
             name: duo.name,
