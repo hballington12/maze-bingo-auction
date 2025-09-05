@@ -6,7 +6,7 @@
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
     "server:dev": "nodemon --watch server --ext ts --exec \"npx tsx server/index.ts\"",
     "client:dev": "cd client && npm run dev",
-    "build": "npm run build:client && npm run build:server",
+    "build": "./build.sh",
     "build:server": "tsc",
     "build:client": "cd client && npm install && npm run build",
     "start": "node dist/index.js"
