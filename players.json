@@ -1,0 +1,214 @@
+{
+  "pools": {
+    "A": [
+      {
+        "name": "chrisog",
+        "stats": {
+          "combat": 126,
+          "total": 2277,
+          "ehb": 1453.84,
+          "ehp": 1317.62,
+          "bosses": {
+            "callisto": 225,
+            "kalphite_queen": 584,
+            "kraken": 5056,
+            "chaos_fanatic": 38,
+            "commander_zilyana": 547
+          }
+        }
+      },
+      {
+        "name": "solo h",
+        "stats": {
+          "combat": 126,
+          "total": 2277,
+          "ehb": 1961.93,
+          "ehp": 1970.79,
+          "bosses": {
+            "vetion": 832,
+            "dagannoth_supreme": 580,
+            "scorpia": 254,
+            "chaos_fanatic": 96,
+            "corporeal_beast": 173
+          }
+        }
+      },
+      {
+        "name": "xiuol",
+        "stats": {
+          "combat": 126,
+          "total": 2277,
+          "ehb": 2854.94,
+          "ehp": 2029.44,
+          "bosses": {
+            "commander_zilyana": 676,
+            "corporeal_beast": 3489,
+            "king_black_dragon": 272,
+            "kalphite_queen": 791,
+            "zulrah": 4197
+          }
+        }
+      },
+      {
+        "name": "acid pools",
+        "stats": {
+          "combat": 126,
+          "total": 2241,
+          "ehb": 2592.94,
+          "ehp": 967.31,
+          "bosses": {
+            "general_graardor": 10800,
+            "giant_mole": 318,
+            "venenatis": 552,
+            "crazy_archaeologist": 62,
+            "king_black_dragon": 2413
+          }
+        }
+      },
+      {
+        "name": "complex",
+        "stats": {
+          "combat": 126,
+          "total": 2277,
+          "ehb": 1257.89,
+          "ehp": 5380.56,
+          "bosses": {
+            "vorkath": 131,
+            "cerberus": 825,
+            "callisto": 755,
+            "crazy_archaeologist": 411,
+            "zulrah": 2738
+          }
+        }
+      },
+      {
+        "name": "hollar",
+        "stats": {
+          "combat": 126,
+          "total": 2277,
+          "ehb": 1668.99,
+          "ehp": 1798.8,
+          "bosses": {
+            "giant_mole": 7886,
+            "vetion": 17,
+            "kalphite_queen": 1450,
+            "commander_zilyana": 1688,
+            "general_graardor": 1429
+          }
+        }
+      }
+    ],
+    "B": [
+      {
+        "name": "solo h",
+        "stats": {
+          "combat": 126,
+          "total": 2277,
+          "ehb": 1961.93,
+          "ehp": 1970.79,
+          "bosses": {
+            "vetion": 832,
+            "dagannoth_supreme": 580,
+            "scorpia": 254,
+            "chaos_fanatic": 96,
+            "corporeal_beast": 173
+          }
+        }
+      }
+    ],
+    "C": [
+      {
+        "name": "bilbo36",
+        "stats": {
+          "combat": 94,
+          "total": 1844,
+          "ehb": 53.44,
+          "ehp": 206.76,
+          "bosses": {
+            "dagannoth_rex": 123,
+            "skotizo": 5,
+            "dagannoth_prime": 80,
+            "king_black_dragon": 103,
+            "general_graardor": 81
+          }
+        }
+      }
+    ],
+    "Duos": [
+      {
+        "name": "bilbo36 & complex",
+        "players": [
+          {
+            "name": "bilbo36",
+            "stats": {
+              "combat": 94,
+              "total": 1844,
+              "ehb": 53.44,
+              "ehp": 206.76,
+              "bosses": {
+                "dagannoth_rex": 123,
+                "skotizo": 5,
+                "dagannoth_prime": 80,
+                "king_black_dragon": 103,
+                "general_graardor": 81
+              }
+            }
+          },
+          {
+            "name": "complex",
+            "stats": {
+              "combat": 126,
+              "total": 2277,
+              "ehb": 1257.89,
+              "ehp": 5380.56,
+              "bosses": {
+                "vorkath": 131,
+                "cerberus": 825,
+                "callisto": 755,
+                "crazy_archaeologist": 411,
+                "zulrah": 2738
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "solo h & xiuol",
+        "players": [
+          {
+            "name": "solo h",
+            "stats": {
+              "combat": 126,
+              "total": 2277,
+              "ehb": 1961.93,
+              "ehp": 1970.79,
+              "bosses": {
+                "vetion": 832,
+                "dagannoth_supreme": 580,
+                "scorpia": 254,
+                "chaos_fanatic": 96,
+                "corporeal_beast": 173
+              }
+            }
+          },
+          {
+            "name": "xiuol",
+            "stats": {
+              "combat": 126,
+              "total": 2277,
+              "ehb": 2854.94,
+              "ehp": 2029.44,
+              "bosses": {
+                "commander_zilyana": 676,
+                "corporeal_beast": 3489,
+                "king_black_dragon": 272,
+                "kalphite_queen": 791,
+                "zulrah": 4197
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
