@@ -363,7 +363,7 @@ function App() {
       });
       
       // Delay captain updates (budget & roster) until all bids are revealed
-      const totalBidRevealTime = sortedBids.length * 800;
+      const totalBidRevealTime = sortedBids.length * 800 + 1500;
       setTimeout(() => {
         setCaptains(updatedCaptains);
       }, totalBidRevealTime);
