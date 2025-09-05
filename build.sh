@@ -15,7 +15,7 @@ fi
 
 echo "Installing client dependencies..."
 cd client
-npm install
+npm install --include=dev
 
 echo "Building client..."
 npm run build
