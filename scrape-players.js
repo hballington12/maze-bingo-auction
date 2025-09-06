@@ -3,15 +3,53 @@ const https = require('https');
 
 const WISEOLDMAN_API_BASE = 'https://api.wiseoldman.net/v2/players';
 
-// Player usernames to scrape
-const playerUsernames = [
-  'chrisog',
-  'solo h', 
+// Pool A players
+const poolA = [
+  'lunizzzz',
+  'lil bifta',
+  '0t f',
+  'lorenzno',
+  'uzumaki hamy',
+  'chxlsea',
+  'iron jecr',
+  'fondle'
+];
+
+// Pool B players
+const poolB = [
+  'sensei ar3s',
+  'titterzz',
+  'doomantas',
+  'rdubberz',
+  'sugarfe',
+  'heightsy',
+  'hollar',
+  'fe trivian'
+];
+
+// Pool C players
+const poolC = [
+  't 0 l l',
+  'ivae',
+  'brimham',
+  'shagplex',
   'xiuol',
-  'acid pools',
-  'bilbo36',
-  'complex',
-  'hollar'
+  'schietmeaf',
+  'avernic-cho'
+];
+
+// Duo teams
+const duoTeams = [
+  ['stigmaster', '5it down rat'],
+  ['tidusbaby', 'purerobin'],
+  ['imattois', 'kerekewere'],
+  ['aurorin', 'solo h'],
+  ['vyturys', 'reapers0raka'],
+  ['luckyimp', 'og kala'],
+  ['raadz', 'sleep222'],
+  ['cen sational', 'goffin'],
+  ['themada', 'MajinBuu1452'],
+  ['shlaters', 'Jurtappen']
 ];
 
 // Common boss names - we'll select 5 random from these
@@ -155,53 +193,53 @@ async function scrapeAllPlayers() {
   };
   
   try {
-    // Scrape all players
-    const playerPromises = playerUsernames.map(username => scrapePlayer(username));
-    const players = await Promise.all(playerPromises);
+    // Scrape Pool A players
+    console.log('\n=== Scraping Pool A players ===');
+    for (const username of poolA) {
+      const playerData = await scrapePlayer(username);
+      scrapedData.pools.A.push(playerData);
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Rate limiting - 2 seconds
+    }
     
-    // Distribute players across pools based on combat level
-    players.forEach((player, index) => {
-      const combatLevel = player.stats.combat;
+    // Scrape Pool B players
+    console.log('\n=== Scraping Pool B players ===');
+    for (const username of poolB) {
+      const playerData = await scrapePlayer(username);
+      scrapedData.pools.B.push(playerData);
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Rate limiting - 2 seconds
+    }
+    
+    // Scrape Pool C players
+    console.log('\n=== Scraping Pool C players ===');
+    for (const username of poolC) {
+      const playerData = await scrapePlayer(username);
+      scrapedData.pools.C.push(playerData);
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Rate limiting - 2 seconds
+    }
+    
+    // Scrape Duo teams
+    console.log('\n=== Scraping Duo teams ===');
+    for (const [player1Name, player2Name] of duoTeams) {
+      console.log(`Scraping duo: ${player1Name} & ${player2Name}`);
       
-      if (combatLevel >= 120) {
-        scrapedData.pools.A.push(player);
-      } else if (combatLevel >= 100) {
-        scrapedData.pools.B.push(player);
-      } else {
-        scrapedData.pools.C.push(player);
-      }
-    });
-    
-    // Create some duo entries by pairing players
-    const remainingPlayers = [...players];
-    while (remainingPlayers.length >= 2 && scrapedData.pools.Duos.length < 2) {
-      const player1 = remainingPlayers.splice(Math.floor(Math.random() * remainingPlayers.length), 1)[0];
-      const player2 = remainingPlayers.splice(Math.floor(Math.random() * remainingPlayers.length), 1)[0];
+      const player1Data = await scrapePlayer(player1Name);
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Rate limiting - 2 seconds
+      const player2Data = await scrapePlayer(player2Name);
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Rate limiting - 2 seconds
       
       scrapedData.pools.Duos.push({
-        name: `${player1.name} & ${player2.name}`,
+        name: `${player1Name} & ${player2Name}`,
         players: [
           {
-            name: player1.name,
-            stats: player1.stats
+            name: player1Name,
+            stats: player1Data.stats
           },
           {
-            name: player2.name,
-            stats: player2.stats
+            name: player2Name,
+            stats: player2Data.stats
           }
         ]
       });
-    }
-    
-    // Ensure each pool has at least some players
-    if (scrapedData.pools.A.length === 0 && players.length > 0) {
-      scrapedData.pools.A.push(players[0]);
-    }
-    if (scrapedData.pools.B.length === 0 && players.length > 1) {
-      scrapedData.pools.B.push(players[1]);
-    }
-    if (scrapedData.pools.C.length === 0 && players.length > 2) {
-      scrapedData.pools.C.push(players[2]);
     }
     
     // Write to file
